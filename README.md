@@ -1,13 +1,14 @@
-# Angular 2.x Generator + TypeScript
+# Angular 2.x Generator + TypeScript/Babel (ES6/E7)
 
-> Experimental Yeoman generator for your next Angular 2.x project
+> Experimental Yeoman generator for your next Angular 2.x project; which supports TypeScript and Babel (ES6/7)
 
 The generator is coded in [ES6](https://github.com/lukehoban/es6features) with [Babel](https://babeljs.io/) as polyfill. Thus, it avoids much of the overhead in creating the generator.
 
 ## Features
 - Angular 2.x
 - Use ES6 Modules via [SystemJS](https://github.com/systemjs/systemjs)
-- TypeScript with SystemJS transpilling
+- TypeScript with SystemJS
+- Babel with SystemJS
 - Modular [Grunt](http://gruntjs.com/)
 - [Sass](http://sass-lang.com/) for CSS preprocessing
 - Bundling JavaScript via SystemJS (SFX)
@@ -21,6 +22,8 @@ _ ...
 
 ## Requirements
 
+- [TypeScript](https://www.typescriptlang.org)
+- [Babel](http://babeljs.io)
 - [Grunt](http://gruntjs.com)
 - [Yeoman](http://yeoman.io))
 - [Karma](http://karma-runner.github.io)
@@ -38,14 +41,14 @@ PhantomJS 2.x is needed to have the tests running; thus please install it separa
 brew install phantomjs
 ```
 
-Install `yo`, `grunt-cli`, `jspm`, `karma`, `typings`, `typescript` and `nightwatch` in the global scope `-g`:
+Install `yo`, `grunt-cli`, `jspm`, `babel-cli` `karma`, `typings`, `typescript` and `nightwatch` in the global scope `-g`:
 
 > this is not really necessary, because some of these tools are installed locally, but it is best to have them always at hand
 
 > use `npm set progress=false` as to dramatically improve the speed of npm
 
 ```
-npm i -g yo grunt-cli jspm karma nightwatch typings typescript
+npm i -g yo grunt-cli jspm babel-cli karma nightwatch typings typescript
 ```
 
 Create a new folder for your project, and `cd` into it:
