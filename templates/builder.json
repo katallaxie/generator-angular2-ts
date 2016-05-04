@@ -1,0 +1,19 @@
+{
+  "packages": {
+    "src/app": {
+      "defaultExtension": "ts",
+      "meta": {
+        "*.ts": {
+          "loader": "ts"
+        }
+      }
+    },
+    "angular2": {
+      "meta": {
+        "*.js": {
+          "typings": true
+        }
+      }
+    }
+  }
+}

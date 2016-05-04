@@ -1,0 +1,56 @@
+<!-- default; HTML5 -->
+<html>
+
+  <head>
+
+    <!-- default; HTML5 routing -->
+    <base href="/">
+
+    <!-- default; title -->
+    <title>Angular 2.0 Demo</title>
+
+    <!-- default; UTF-8 encoding -->
+    <meta charset="utf-8">
+
+    <!-- default; inital setting to view 100% on mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- build:css(.tmp) styles/app.css -->
+    <!-- default; pre-processed stylesheet -->
+    <link rel="stylesheet" href="styles/app.css"/>
+    <!-- endbuild -->
+
+    <!-- process:remove -->
+    <!-- this is for the Microsoft guys -->
+    <script src="http://localhost:1337/vorlon.js"></script>
+    <!-- /process -->
+
+    <!-- default; polyfills for SystemJS -->
+    <!-- build:js scripts/system-polyfills.js -->
+    <script src="jspm_packages/system-polyfills.js"></script>
+    <!-- endbuild -->
+
+    <!-- default; SystemJs -->
+    <!-- build:js scripts/system.js -->
+    <script src="jspm_packages/system.js"></script>
+    <!-- endbuild -->
+
+    <!-- default; App -->
+    <!-- build:js(.tmp) scripts/app.js -->
+    <script src="config.js"></script>
+    <script>
+      System.import( 'app/boot' )
+        .catch( console.error.bind( console ) ); // make sure any errors are print to console
+    </script>
+    <!-- endbuild -->
+
+  </head>
+
+  <body>
+
+    <!-- default; display the app -->
+    <app>Loading ...</app>
+
+  </body>
+
+</html>

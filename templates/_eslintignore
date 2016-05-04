@@ -1,0 +1,13 @@
+# /node_modules and /bower_components ignored by default
+jspm_packages/
+
+# Ignore JSPM & Karma
+config.js
+karma.conf.js
+
+# Ignore build, for now
+build/
+
+# Ignore app, because it is TypeScript
+src/app/**/*.js
+www/**/*.js

@@ -1,0 +1,4 @@
+{
+  "plugins": ["add-module-exports"],
+  "presets": ["es2015", "es2016-node5"]
+}
