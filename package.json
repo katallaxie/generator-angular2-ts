@@ -1,6 +1,6 @@
 {
   "name": "generator-angular2-ts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An Angular 2.x generator with TypeScript",
   "homepage": "https://github.com/katallaxie",
   "author": {
