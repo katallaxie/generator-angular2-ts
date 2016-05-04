@@ -44,6 +44,8 @@ Install `yo`, `grunt-cli`, `jspm`, `karma`, `typings`, `typescript` and `nightwa
 
 > this is not really necessary, because some of these tools are installed locally, but it is best to have them always at hand
 
+> use `npm set progress=false` as to dramatically improve the speed of npm
+
 ```
 npm i -g yo grunt-cli jspm karma nightwatch typings typescript
 ```
