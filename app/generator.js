@@ -60,7 +60,8 @@ var config = {
   www: 'www', // this is the live folder
   npm: {
     loglevel: 'error'
-  }
+  },
+  transpiler: ['typescript', 'babel']
 };
 
 // extending lodash with underscore.string methods
@@ -110,7 +111,7 @@ var Generator = function (_Yeoman) {
     value: function initializing() {
 
       // we have a different root for the sources
-      this.sourceRoot(_path2.default.join(__dirname, '../templates'));
+      this.sourceRoot(_path2.default.join(__dirname, '../templates/app'));
 
       // we would the defaults here
     }
@@ -122,9 +123,15 @@ var Generator = function (_Yeoman) {
 
 
     // configure before proceeding to setup
-    value: function configuring() {}
+    value: function configuring() {
 
-    // something to be done here
+      // helper variables
+      this.isBabel = this.transpiler === 'babel';
+      this.isTypescript = !this.isBabel;
+
+      // set template directory
+      this.dir = this.transpiler;
+    }
 
     // writing the files to folder
 
@@ -134,10 +141,12 @@ var Generator = function (_Yeoman) {
 
       // creating the www for Cordova
       try {
-        _fs2.default.mkdirSync(this.destinationPath());
+        _fs2.default.mkdirSync(this.destinationPath('www'));
       } catch (error) {
-        if (error.code != 'EEXIST') throw error;
+        if (error.code !== 'EEXIST') throw error;
       }
+
+      // these are the general things to setup
 
       // grunt
       this.directory('grunt');
@@ -157,22 +166,17 @@ var Generator = function (_Yeoman) {
       this.copy('_eslintrc', '.eslintrc');
       this.copy('_eslintignore', '.eslintignore');
 
-      // typescript
-      this.copy('tslint.json', 'tslint.json');
-      this.copy('tsconfig.json', 'tsconfig.json');
-      this.copy('typings.json', 'typings.json');
-
-      // SystemJS
-      this.copy('builder.json', 'builder.json');
+      // docker
+      this.copy('Dockerfile', 'Dockerfile');
 
       // karma
       this.template('karma.conf.js');
 
       // jspm
-      this.template('config.js');
+      this.copy('../' + this.dir + '/config.js', 'config.js');
 
       // app
-      this.directory('src/app');
+      this.directory('../' + this.dir + '/src/app', this.destinationRoot() + '/src/app');
 
       // styles
       this.directory('src/styles');
@@ -185,6 +189,29 @@ var Generator = function (_Yeoman) {
 
       // index.html
       this.template('src/index.html');
+
+      // what follows is babel specific
+      if (this.isBabel) {
+        // grunt
+        this.copy('../' + this.dir + '/grunt/aliases.js', 'grunt/aliases.js');
+        this.copy('../' + this.dir + '/grunt/systemjs.js', 'grunt/systemjs.js');
+      }
+
+      // what follows is typescript specific
+
+      if (this.isTypescript) {
+        // grunt
+        this.copy('../' + this.dir + '/grunt/aliases.js', 'grunt/aliases.js');
+        this.copy('../' + this.dir + '/grunt/tslint.js', 'grunt/tslint.js');
+
+        // typescript
+        this.copy('../' + this.dir + '/tslint.json', 'tslint.json');
+        this.copy('../' + this.dir + '/tsconfig.json', 'tsconfig.json');
+        this.copy('../' + this.dir + '/typings.json', 'typings.json');
+
+        // SystemJS
+        this.copy('../' + this.dir + '/builder.json', 'builder.json');
+      }
 
       // Write your files
       this.fs.write(this.destinationPath('README.md'), '# ' + this.app + '\n');
@@ -266,9 +293,35 @@ var Generator = function (_Yeoman) {
         },
 
 
+        // provide a nice description for package json
+        askForDescription: function askForDescription() {
+          var _this3 = this;
+
+          // async
+          var done = this.async();
+
+          // displaying
+          var prompts = [{
+            type: 'input',
+            name: 'description',
+            message: 'What is your great new app doing?',
+            default: 'Something really, really great ...',
+            store: true
+          }];
+
+          this.prompt(prompts, function (_ref2) {
+            var description = _ref2.description;
+
+            _this3.description = description;
+            // resolve
+            done();
+          });
+        },
+
+
         // then we would like to setup the package.json
         askForGit: function askForGit() {
-          var _this3 = this;
+          var _this4 = this;
 
           // async
           var done = this.async();
@@ -294,42 +347,40 @@ var Generator = function (_Yeoman) {
             store: true
           }];
 
-          this.prompt(prompts, function (_ref2) {
-            var name = _ref2.name;
-            var email = _ref2.email;
-            var git = _ref2.git;
+          this.prompt(prompts, function (_ref3) {
+            var name = _ref3.name;
+            var email = _ref3.email;
+            var git = _ref3.git;
 
-            _this3.author = {
+            _this4.author = {
               name: name,
               email: email
             };
-            _this3.git = git;
+            _this4.git = git;
             // resolve
             done();
           });
         },
-
-
-        // provide a nice description for package json
-        askForDescription: function askForDescription() {
-          var _this4 = this;
+        askForTranspiler: function askForTranspiler() {
+          var _this5 = this;
 
           // async
           var done = this.async();
 
           // displaying
           var prompts = [{
-            type: 'input',
-            name: 'description',
-            message: 'What is your great new app doing?',
-            default: 'Something really, really great ...',
+            type: 'list',
+            name: 'template',
+            message: 'What is your transpiler',
+            choices: config.transpiler,
+            require: true,
             store: true
           }];
 
-          this.prompt(prompts, function (_ref3) {
-            var description = _ref3.description;
+          this.prompt(prompts, function (_ref4) {
+            var template = _ref4.template;
 
-            _this4.description = description;
+            _this5.transpiler = template;
             // resolve
             done();
           });

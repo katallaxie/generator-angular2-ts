@@ -5,9 +5,6 @@ jspm_packages/
 config.js
 karma.conf.js
 
-# Ignore build, for now
-build/
-
 # Ignore app, because it is TypeScript
 src/app/**/*.js
 www/**/*.js

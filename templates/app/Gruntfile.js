@@ -116,6 +116,8 @@ module.exports = grunt => { // always try to be nice
   // using https://github.com/firstandthird/load-grunt-config
   require('load-grunt-config')(grunt, config);
 
+  <% if ( isTypescript ) { %>
+
   // custom SystemJS builder task
   grunt.registerTask( 'builder', function () {
 
@@ -154,5 +156,7 @@ module.exports = grunt => { // always try to be nice
       } );
 
   } );
+
+  <% } %>
 
 };

@@ -27,8 +27,6 @@ module.exports = () => { // passing in grunt and the config
       tasks : [
         // eslint
         'eslint',
-        // tslint
-        'tslint',
         // globbing sass on components
         'sass_globbing',
         // compile sass
@@ -75,7 +73,7 @@ module.exports = () => { // passing in grunt and the config
         // post process css
         'postcss',
         // jspm
-        'builder',
+        'systemjs',
         // copy everything to www
         'copy',
         // compress images

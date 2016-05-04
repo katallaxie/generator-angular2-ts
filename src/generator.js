@@ -18,7 +18,8 @@ const config = {
   www : 'www', // this is the live folder
   npm : {
     loglevel : 'error'
-  }
+  },
+  transpiler : [ 'typescript', 'babel' ]
 }
 
 // extending lodash with underscore.string methods
@@ -50,7 +51,7 @@ export default class Generator extends Yeoman {
   initializing () {
 
     // we have a different root for the sources
-    this.sourceRoot( Path.join( __dirname, '../templates' ) );
+    this.sourceRoot( Path.join( __dirname, '../templates/app' ) );
 
     // we would the defaults here
 
@@ -88,6 +89,29 @@ export default class Generator extends Yeoman {
         this.prompt( prompts, ( { app } ) => {
           this.app = app;
           this.appname = _.camelize( _.slugify( _.humanize( app ) ) );
+          // resolve
+          done();
+        } );
+
+      },
+
+      // provide a nice description for package json
+      askForDescription() {
+
+        // async
+        let done = this.async();
+
+        // displaying
+        let prompts = [ {
+          type : 'input',
+          name : 'description',
+          message : `What is your great new app doing?`,
+          default : `Something really, really great ...`,
+          store : true
+        } ];
+
+        this.prompt( prompts, ( { description } ) => {
+          this.description = description;
           // resolve
           done();
         } );
@@ -133,28 +157,28 @@ export default class Generator extends Yeoman {
 
       },
 
-      // provide a nice description for package json
-      askForDescription() {
+      askForTranspiler () {
 
         // async
         let done = this.async();
 
         // displaying
         let prompts = [ {
-          type : 'input',
-          name : 'description',
-          message : `What is your great new app doing?`,
-          default : `Something really, really great ...`,
-          store : true
+          type : 'list',
+          name : 'template',
+          message : `What is your transpiler`,
+          choices : config.transpiler,
+          require : true,
+          store: true
         } ];
 
-        this.prompt( prompts, ( { description } ) => {
-          this.description = description;
+        this.prompt( prompts, ( { template } ) => {
+          this.transpiler = template;
           // resolve
           done();
         } );
 
-      },
+      }
 
     };
 
@@ -163,7 +187,12 @@ export default class Generator extends Yeoman {
   // configure before proceeding to setup
   configuring () {
 
-    // something to be done here
+    // helper variables
+    this.isBabel = this.transpiler === 'babel';
+    this.isTypescript = ! this.isBabel;
+
+    // set template directory
+    this.dir = this.transpiler;
 
   }
 
@@ -172,10 +201,12 @@ export default class Generator extends Yeoman {
 
     // creating the www for Cordova
     try {
-      Fs.mkdirSync( this.destinationPath(  ) );
-    } catch(error) {
-      if ( error.code != 'EEXIST' ) throw error;
+      Fs.mkdirSync( this.destinationPath( 'www' ) );
+    } catch( error ) {
+      if ( error.code !== 'EEXIST' ) throw error;
     }
+
+    // these are the general things to setup
 
     // grunt
     this.directory( 'grunt' );
@@ -195,22 +226,17 @@ export default class Generator extends Yeoman {
     this.copy( '_eslintrc', '.eslintrc' );
     this.copy( '_eslintignore', '.eslintignore' );
 
-    // typescript
-    this.copy( 'tslint.json', 'tslint.json' );
-    this.copy( 'tsconfig.json', 'tsconfig.json' );
-    this.copy( 'typings.json', 'typings.json' );
-
-    // SystemJS
-    this.copy( 'builder.json', 'builder.json' );
+    // docker
+    this.copy( 'Dockerfile', 'Dockerfile' );
 
     // karma
     this.template( 'karma.conf.js' );
 
     // jspm
-    this.template( 'config.js' );
+    this.copy( `../${ this.dir }/config.js`, 'config.js' );
 
     // app
-    this.directory( 'src/app' );
+    this.directory( `../${ this.dir }/src/app`, `${ this.destinationRoot() }/src/app` );
 
     // styles
     this.directory( 'src/styles' );
@@ -223,6 +249,29 @@ export default class Generator extends Yeoman {
 
     // index.html
     this.template( 'src/index.html' );
+
+    // what follows is babel specific
+    if ( this.isBabel ) {
+      // grunt
+      this.copy( `../${ this.dir }/grunt/aliases.js`, 'grunt/aliases.js' );
+      this.copy( `../${ this.dir }/grunt/systemjs.js`, 'grunt/systemjs.js' );
+    }
+
+    // what follows is typescript specific
+
+    if ( this.isTypescript ) {
+      // grunt
+      this.copy( `../${ this.dir }/grunt/aliases.js`, 'grunt/aliases.js' );
+      this.copy( `../${ this.dir }/grunt/tslint.js`, 'grunt/tslint.js' );
+
+      // typescript
+      this.copy( `../${ this.dir }/tslint.json`, 'tslint.json' );
+      this.copy( `../${ this.dir }/tsconfig.json`, 'tsconfig.json' );
+      this.copy( `../${ this.dir }/typings.json`, 'typings.json' );
+
+      // SystemJS
+      this.copy( `../${ this.dir }/builder.json`, 'builder.json' );
+    }
 
     // Write your files
     this.fs.write( this.destinationPath( 'README.md' ), `# ${ this.app }\n` );
