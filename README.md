@@ -14,8 +14,6 @@ The generator is coded in [ES6](https://github.com/lukehoban/es6features) with [
 - Uses [BrowserSync](https://www.browsersync.io/) to live code in the browser
 - Also does image compression via imagemin
 
-> Only supported platforms are iOS and Android
-
 ## Todo
 - Smoke Testing & E2E (Karma & Nightwatch )
 - Unit Testing
