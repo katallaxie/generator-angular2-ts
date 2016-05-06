@@ -67,7 +67,7 @@ export default class Generator extends Yeoman {
       greeting () {
 
         // say yo!
-        Util.log( Yosay('\'Greatings\'! Angular 2.x with Typescript!') );
+        Util.log( Yosay('\'Greatings\'! Angular 2.x with Typescript/Babel + ES6/ES7!') );
 
       },
 

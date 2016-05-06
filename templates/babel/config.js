@@ -10,6 +10,20 @@ System.config({
     ]
   },
 
+  packages: {
+    "app": {
+      "main": "boot.js",
+      "defaultExtension": "js"
+    },
+    "@angular/*": {
+      "main": "index.js",
+      "defaultExtension": "js"
+    },
+    'rxjs': {
+      defaultExtension: 'js'
+    }
+  },
+
   paths: {
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"

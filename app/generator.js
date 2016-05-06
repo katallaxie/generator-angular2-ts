@@ -262,7 +262,7 @@ var Generator = function (_Yeoman) {
         greeting: function greeting() {
 
           // say yo!
-          _util2.default.log((0, _yosay2.default)('\'Greatings\'! Angular 2.x with Typescript!'));
+          _util2.default.log((0, _yosay2.default)('\'Greatings\'! Angular 2.x with Typescript/Babel + ES6/ES7!'));
         },
 
 

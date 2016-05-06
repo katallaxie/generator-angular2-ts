@@ -14,6 +14,7 @@ System.config({
 
   packages: {
     "app": {
+      "main": "boot.ts",
       "defaultExtension": "ts",
       "meta": {
         "*.ts": {
@@ -21,12 +22,17 @@ System.config({
         }
       }
     },
-    "angular2": {
+    "@angular/*": {
+      "main": "index.js",
+      "defaultExtension": "js",
       "meta": {
         "*.js": {
           "typings": true     // can also be path of a typings bundle
         }
       }
+    },
+    'rxjs': {
+      defaultExtension: 'js'
     }
   },
 
