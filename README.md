@@ -1,4 +1,4 @@
-# Angular 2.x Generator + TypeScript/Babel (ES6/E7)
+# Angular 2.x Generator + TypeScript/Babel (ES6/ES7)
 
 > Experimental Yeoman generator for your next Angular 2.x project; which supports TypeScript and Babel (ES6/7)
 
@@ -25,13 +25,13 @@ _ ...
 - [TypeScript](https://www.typescriptlang.org)
 - [Babel](http://babeljs.io)
 - [Grunt](http://gruntjs.com)
-- [Yeoman](http://yeoman.io))
+- [Yeoman](http://yeoman.io)
 - [Karma](http://karma-runner.github.io)
 - [PhantomJS](http://phantomjs.org)
 
 ## Usage
 
-> Many thins are still in the flow
+> Many things are still in the flow
 
 ### Setup
 
