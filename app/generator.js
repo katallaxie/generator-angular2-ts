@@ -170,7 +170,7 @@ var Generator = function (_Yeoman) {
       this.copy('Dockerfile', 'Dockerfile');
 
       // karma
-      this.template('karma.conf.js');
+      this.template('../' + this.dir + '/karma.conf.js', 'karma.conf.js');
 
       // jspm
       this.copy('../' + this.dir + '/config.js', 'config.js');
