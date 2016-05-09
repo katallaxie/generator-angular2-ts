@@ -3,8 +3,22 @@ System.config({
   defaultJSExtensions: true,
   transpiler: "ts",
   typescriptOptions: {
-    "tsconfig": true,
-    "module": "system"
+    "compilerOptions": {
+      "target": "es5",
+      "module": "system",
+      "sourceMap": true,
+      "moduleResolution": "node",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "noImplicitAny": false,
+      "newLine": "LF",
+      "compileOnSave": false
+    },
+    "exclude": [
+      "node_modules",
+      "typings/main.d.ts",
+      "typings/main"
+    ]
   },
 
   paths: {
