@@ -36,6 +36,13 @@ jspm_packages
 *.swp
 *.un~
 
+# CI (e.g. Jenkins)
+reports
+checkstyle-result.xml
+test-results.xml
+coverage.xml
+coverage.lcov
+
 # Build
 build/
 reports/
