@@ -25,14 +25,19 @@
     <script src="http://localhost:1337/vorlon.js"></script>
     <!-- /process -->
 
-    <!-- default; polyfills for SystemJS -->
+    <!-- default; AngularJS dependencies -->
+    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+
+    <!-- default; Polyfills for SystemJS -->
     <!-- build:js scripts/system-polyfills.js -->
-    <script src="jspm_packages/system-polyfills.js"></script>
+    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
     <!-- endbuild -->
 
     <!-- default; SystemJs -->
     <!-- build:js scripts/system.js -->
-    <script src="jspm_packages/system.js"></script>
+    <script src="node_modules/systemjs/dist/system.js"></script>
     <!-- endbuild -->
 
     <!-- default; App -->

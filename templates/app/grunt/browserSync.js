@@ -21,7 +21,7 @@ module.exports = ( grunt, config ) => {
           'Chrome'
         ],
         server: {
-          baseDir: [ '.tmp', 'src', 'jspm_packages', './' ] // include the artifacts and packages
+          baseDir: [ '.tmp', 'src', 'node_modules', './' ] // include the artifacts and packages
         }
       },
       bsFiles: {
