@@ -190,6 +190,9 @@ var Generator = function (_Yeoman) {
       // index.html
       this.template('src/index.html');
 
+      // testing
+      this.directory('../' + this.dir + '/test');
+
       // what follows is babel specific
       if (this.isBabel) {
         // grunt
