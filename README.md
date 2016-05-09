@@ -41,14 +41,14 @@ PhantomJS 2.x is needed to have the tests running; thus please install it separa
 brew install phantomjs
 ```
 
-Install `yo`, `grunt-cli`, `jspm`, `babel-cli` `karma`, `typings`, `typescript` and `nightwatch` in the global scope `-g`:
+Install `yo`, `grunt-cli`, `babel-cli` `karma`, `typings`, `typescript` and `nightwatch` in the global scope `-g`:
 
 > this is not really necessary, because some of these tools are installed locally, but it is best to have them always at hand
 
 > use `npm set progress=false` as to dramatically improve the speed of npm
 
 ```
-npm i -g yo grunt-cli jspm babel-cli karma nightwatch typings typescript
+npm i -g yo grunt-cli babel-cli karma nightwatch typings typescript
 ```
 
 Create a new folder for your project, and `cd` into it:
