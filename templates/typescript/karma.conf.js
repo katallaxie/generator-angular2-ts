@@ -16,20 +16,19 @@ module.exports = config => {
 
     // list of plugins
     plugins: [
-      'karma-jspm',
-      'karma-jasmine',
-      'karma-phantomjs-launcher',
       'karma-chrome-launcher',
-      'karma-babel-preprocessor',
       'karma-coverage',
-      'karma-junit-reporter'
+      'karma-jasmine',
+      'karma-jspm',
+      'karma-junit-reporter',
+      'karma-phantomjs-launcher'
     ],
 
     // jspm
     jspm: {
       config: 'config.js',
-      loadFiles: ['test/shims.js', 'src/app/**/*.spec.js'],
-      serveFiles: ['src/app/**/*.!(uat)+(js)']
+      loadFiles: ['test/shims.js', 'src/app/**/*.spec.ts'],
+      serveFiles: ['src/app/**/*.!(spec)+(ts)']
     },
 
     // proxies
@@ -43,16 +42,7 @@ module.exports = config => {
     preprocessors: {
       // source files, that you wanna generate coverage for - do not include tests or libraries
       // (these files will be instrumented by Istanbul)
-      'src/**/*.!(spec)+(js)': ['babel', 'coverage']
-    },
-
-    // transpile with babel since the coverage reporter throws error on ES6 syntax
-    babelPreprocessor: {
-      options: {
-        presets: ['es2015', 'stage-0'],
-        sourceMap: 'inline',
-        plugins: ['transform-decorators-legacy']
-      }
+      'src/**/*.!(spec)+(js)': []
     },
 
     // list of files / patterns to load in the browser
@@ -64,7 +54,7 @@ module.exports = config => {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: [ 'progress', 'junit', 'coverage' ],
+    reporters: ['progress', 'junit', 'coverage'],
 
     // junit report, for jenkins
     junitReporter: {

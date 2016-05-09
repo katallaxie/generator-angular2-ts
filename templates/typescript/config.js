@@ -13,6 +13,10 @@ System.config({
   },
 
   packages: {
+    "src": {
+      "main": "main",
+      "defaultExtension": "ts"
+    },
     "app": {
       "main": "boot.ts",
       "defaultExtension": "ts",
