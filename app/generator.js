@@ -156,7 +156,6 @@ var Generator = function (_Yeoman) {
       this.template('package.json', 'package.json');
 
       // git
-      this.copy('_gitignore', '.gitignore');
       this.copy('_gitattributes', '.gitattributes');
 
       // editorconfig
@@ -198,6 +197,10 @@ var Generator = function (_Yeoman) {
         // grunt
         this.copy('../' + this.dir + '/grunt/aliases.js', 'grunt/aliases.js');
         this.copy('../' + this.dir + '/grunt/systemjs.js', 'grunt/systemjs.js');
+        this.copy('../' + this.dir + '/grunt/watch.js', 'grunt/watch.js');
+
+        // git
+        this.copy('../' + this.dir + '/_gitignore', '.gitignore');
       }
 
       // what follows is typescript specific
@@ -206,6 +209,8 @@ var Generator = function (_Yeoman) {
         // grunt
         this.copy('../' + this.dir + '/grunt/aliases.js', 'grunt/aliases.js');
         this.copy('../' + this.dir + '/grunt/tslint.js', 'grunt/tslint.js');
+        this.copy('../' + this.dir + '/grunt/ts.js', 'grunt/ts.js');
+        this.copy('../' + this.dir + '/grunt/watch.js', 'grunt/watch.js');
 
         // typescript
         this.copy('../' + this.dir + '/tslint.json', 'tslint.json');
@@ -214,6 +219,9 @@ var Generator = function (_Yeoman) {
 
         // SystemJS
         this.copy('../' + this.dir + '/builder.json', 'builder.json');
+
+        // git
+        this.copy('../' + this.dir + '/_gitignore', '.gitignore');
       }
 
       // Write your files

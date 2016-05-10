@@ -1,0 +1,52 @@
+# System
+._*
+.apdisk
+.AppleDB
+.AppleDesktop
+.AppleDouble
+.DocumentRevisions-V100
+.DS_Store
+.fseventsd
+.idea
+.LSOverride
+.settings
+.Spotlight-V100
+.sublime-grunt.cache
+.TemporaryItems
+.tmp
+.Trashes
+.VolumeIcon.icns
+.vscode
+
+# Tools
+.eyeglass_cache
+.grunt
+.sass-cache
+.tscache
+*.log
+typings
+
+# Node
+node_modules
+
+# JSPM
+jspm_packages
+
+# Vim tmp files
+*.swp
+*.un~
+
+# CI (e.g. Jenkins)
+reports
+checkstyle-result.xml
+test-results.xml
+coverage.xml
+coverage.lcov
+
+# Build
+build/
+reports/
+src/styles/base/_components.scss
+src/app/**/*.js
+src/app/**/*.map
+www/

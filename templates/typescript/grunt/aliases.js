@@ -29,6 +29,8 @@ module.exports = () => { // passing in grunt and the config
         'eslint',
         // tslint
         'tslint',
+        // typescript
+        'ts',
         // globbing sass on components
         'sass_globbing',
         // compile sass
@@ -66,6 +68,8 @@ module.exports = () => { // passing in grunt and the config
         'eslint',
         // tslint
         'tslint',
+        // typescript
+        'ts',
         // globbing sass on components
         'sass_globbing',
         // compile sass

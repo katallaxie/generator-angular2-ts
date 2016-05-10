@@ -12,7 +12,7 @@ module.exports = ( grunt, config ) => {
       reload : true
     },
     css : {
-      files : [ `${ config.path.app.styles }/**/*.scss`, `${ config.path.app.scripts }/**/*.scss` ],
+      files : [ `${ config.path.app.styles }/**/*.scss` ],
       tasks : [
         // mapping scss components
         'sass_globbing',

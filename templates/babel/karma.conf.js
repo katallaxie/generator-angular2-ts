@@ -56,7 +56,14 @@ module.exports = config => {
     },
 
     // list of files / patterns to load in the browser
-    files: [],
+    files: [
+      'node_modules/systemjs/dist/system-polyfills.js',
+      'node_modules/systemjs/dist/system.js',
+      'node_modules/es6-shim/es6-shim.js',
+      'node_modules/es6-shim/es6-shim.min.js',
+      'node_modules/zone.js/dist/zone.js',
+      'node_modules/reflect-metadata/Reflect.js'
+    ],
 
     // list of files to exclude
     exclude: [],
@@ -64,7 +71,7 @@ module.exports = config => {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: [ 'progress', 'junit', 'coverage' ],
+    reporters: ['progress', 'junit', 'coverage'],
 
     // junit report, for jenkins
     junitReporter: {
