@@ -47,14 +47,13 @@ module.exports = () => { // passing in grunt and the config
       tasks : [ 'fun' ]
     },
 
-    // 'assets' : { // do the pre-production things
-    //   'description' : '',
-    //   'tasks' : []
-    // },
-
     'test' : { // test the app
       description : 'Runs unit tests, smoke tests, and else',
       tasks : [
+        // tslint
+        'tslint',
+        // typescript
+        'ts',
         // running tests with karma
         'karma'
       ]
@@ -80,8 +79,8 @@ module.exports = () => { // passing in grunt and the config
         'concat:generated',
         // post process css
         'postcss',
-        // jspm
-        'builder',
+        // compile systemjs
+        'systemjs',
         // copy everything to www
         'copy',
         // compress images

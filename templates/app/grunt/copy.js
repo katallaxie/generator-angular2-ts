@@ -39,10 +39,13 @@ module.exports = ( grunt, config ) => {
         flatten : true
       }, {
         expand : true,
-        cwd : './jspm_packages',
+        cwd : './node_modules',
         src : [
-          'system.js',
-          'system-polyfills.js'
+          'es6-shim/es6-shim.min.js',
+          'zone.js/dist/zone.js',
+          'reflect-metadata/Reflect.js',
+          'systemjs/dist/system.js',
+          'systemjs/dist/system-polyfills.js'
         ],
         dest : config.path.www.scripts,
         flatten : true
