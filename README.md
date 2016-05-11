@@ -14,6 +14,7 @@ The generator is coded in [ES6](https://github.com/lukehoban/es6features) with [
 - Bundling JavaScript via SystemJS (SFX)
 - Uses [BrowserSync](https://www.browsersync.io/) to live code in the browser
 - Also does image compression via imagemin
+- There also is a docker provided for deployment
 
 ## Todo
 - Smoke Testing & E2E (Karma & Nightwatch )
@@ -82,6 +83,21 @@ As to build the final app run
 ```
 grunt build
 ```
+
+### Docker
+
+As to build the docker image run
+```
+npm run docker
+```
+
+and have run
+
+```
+docker run -it --rm -p 8080:8080 angular2-ts
+```
+
+in the deployment.
 
 ### Testing (tba)
 

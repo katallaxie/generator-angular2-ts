@@ -13,6 +13,7 @@
   "scripts": {
     "start": "grunt fun",
     "test": "grunt test",
+    "docker": "grunt build && docker build -t angular2-ts .",
     <% if ( isTypescript ) { %>
     "postinstall": "npm run typings install && grunt init",
     "typings": "typings"
