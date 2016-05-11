@@ -232,8 +232,9 @@ export default class Generator extends Yeoman {
     this.template( `../${ this.dir }/karma.conf.js`, 'karma.conf.js' );
     this.copy( `../${ this.dir }/karma.shim.js`, 'karma.shim.js' );
 
-    // jspm
+    // systemjs
     this.copy( `../${ this.dir }/config.js`, 'config.js' );
+    this.copy( `../${ this.dir }/grunt/systemjs.js`, 'grunt/systemjs.js' );
 
     // app
     this.directory( `../${ this.dir }/src/app`, `${ this.destinationRoot() }/src/app` );
@@ -257,7 +258,6 @@ export default class Generator extends Yeoman {
     if ( this.isBabel ) {
       // grunt
       this.copy( `../${ this.dir }/grunt/aliases.js`, 'grunt/aliases.js' );
-      this.copy( `../${ this.dir }/grunt/systemjs.js`, 'grunt/systemjs.js' );
       this.copy( `../${ this.dir }/grunt/watch.js`, 'grunt/watch.js' );
 
       // git
