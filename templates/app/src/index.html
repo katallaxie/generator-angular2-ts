@@ -25,6 +25,13 @@
     <script src="http://localhost:1337/vorlon.js"></script>
     <!-- /process -->
 
+  </head>
+
+  <body>
+
+    <!-- default; display the app -->
+    <app>Loading ...</app>
+
     <!-- default; AngularJS dependencies -->
     <!-- build:js scripts/es6-shim.min.js -->
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
@@ -36,32 +43,17 @@
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <!-- endbuild -->
 
-    <!-- default; Polyfills for SystemJS -->
-    <!-- build:js scripts/system-polyfills.js -->
-    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
-    <!-- endbuild -->
-
-    <!-- default; SystemJs -->
-    <!-- build:js scripts/system.js -->
-    <script src="node_modules/systemjs/dist/system.js"></script>
-    <!-- endbuild -->
-
     <!-- default; App -->
     <!-- build:js(.tmp) scripts/app.js -->
+    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+    <script src="node_modules/systemjs/dist/system.js"></script>
     <script src="config.js"></script>
     <script>
       System.import( 'app' )
         .catch( console.error.bind( console ) ); // make sure any errors are print to console
     </script>
     <!-- endbuild -->
-
-  </head>
-
-  <body>
-
-    <!-- default; display the app -->
-    <app>Loading ...</app>
-
+    
   </body>
 
 </html>
