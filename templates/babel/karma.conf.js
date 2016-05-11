@@ -10,7 +10,6 @@ module.exports = config => {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: [
-      'jspm',
       'jasmine'
     ],
 
@@ -25,18 +24,9 @@ module.exports = config => {
       'karma-junit-reporter'
     ],
 
-    // jspm
-    jspm: {
-      config: 'config.js',
-      loadFiles: ['test/shims.js', 'src/app/**/*.spec.js'],
-      serveFiles: ['src/app/**/*.!(uat)+(js)']
-    },
-
     // proxies
     proxies: {
-      '/src/app': '/base/src/app',
-      '/test': '/base/test',
-      '/jspm_packages/' : '/base/jspm_packages/'
+      '/src/app': '/base/src/app'
     },
 
     // preprocessors
@@ -57,12 +47,29 @@ module.exports = config => {
 
     // list of files / patterns to load in the browser
     files: [
-      'node_modules/systemjs/dist/system-polyfills.js',
-      'node_modules/systemjs/dist/system.js',
       'node_modules/es6-shim/es6-shim.js',
-      'node_modules/es6-shim/es6-shim.min.js',
       'node_modules/zone.js/dist/zone.js',
-      'node_modules/reflect-metadata/Reflect.js'
+      'node_modules/zone.js/dist/long-stack-trace-zone.js',
+      'node_modules/zone.js/dist/jasmine-patch.js',
+      'node_modules/systemjs/dist/system-polyfills.js',
+      'node_modules/systemjs/dist/system.src.js',
+      'node_modules/reflect-metadata/Reflect.js',
+
+      {pattern: 'node_modules/@angular/**/*.js', included: false, watched: false, served: true},
+      {pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false, served: true},
+      {pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false, served: true},
+      {pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false, served: true},
+      {pattern: 'node_modules/symbol-observable/**/*.js', included: false, watched: false},
+
+      // shim for ESx
+      'karma.shim.js',
+
+      // app
+      {pattern: 'src/app/**/*.js', included: false, watched: false},
+
+      // assets
+      {pattern: 'src/**/*.html', included: false, watched: true},
+      {pattern: '.tmp/styles/**/*.css', included: false, watched: true}
     ],
 
     // list of files to exclude
@@ -119,7 +126,7 @@ module.exports = config => {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // start these browsers

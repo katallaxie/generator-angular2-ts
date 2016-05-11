@@ -35,6 +35,9 @@ System.config({
     "app": {
       "main": "boot.js"
     },
+    "babel": {
+      "main": "browser.js"
+    },
     "rxjs": {
       "main": "index.js"
     },
@@ -52,7 +55,7 @@ System.config({
     "@angular/platform-browser-dynamic": "node_modules/@angular/platform-browser-dynamic",
     "@angular/router": "node_modules/@angular/router",
     "angular2-in-memory-web-api": "node_modules/angular2-in-memory-web-api",
-    "babel": "node_modules/babel-core/browser.js",
+    "babel": "node_modules/babel-core",
     "rxjs": "node_modules/rxjs",
     "symbol-observable": "node_modules/symbol-observable"
   }
