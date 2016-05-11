@@ -7,7 +7,7 @@ The generator is coded in [ES6](https://github.com/lukehoban/es6features) with [
 ## Features
 - Angular 2.x
 - Use ES6 Modules via [SystemJS](https://github.com/systemjs/systemjs)
-- TypeScript with SystemJS
+- TypeScript + tslint (with [Codelyzer](https://github.com/mgechev/codelyzer))
 - Babel with SystemJS
 - Modular [Grunt](http://gruntjs.com/)
 - [Sass](http://sass-lang.com/) for CSS preprocessing
@@ -17,8 +17,7 @@ The generator is coded in [ES6](https://github.com/lukehoban/es6features) with [
 - There also is a docker provided for deployment
 
 ## Todo
-- Smoke Testing & E2E (Karma & Nightwatch )
-- Unit Testing
+- Smoke Testing & E2E (Nightwatch )
 _ ...
 
 ## Requirements
