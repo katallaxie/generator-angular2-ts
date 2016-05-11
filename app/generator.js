@@ -170,6 +170,7 @@ var Generator = function (_Yeoman) {
 
       // karma
       this.template('../' + this.dir + '/karma.conf.js', 'karma.conf.js');
+      this.copy('../' + this.dir + '/karma.shim.js', 'karma.shim.js');
 
       // jspm
       this.copy('../' + this.dir + '/config.js', 'config.js');

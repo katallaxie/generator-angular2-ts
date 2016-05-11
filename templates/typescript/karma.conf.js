@@ -10,43 +10,54 @@ module.exports = config => {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: [
-      'jspm',
       'jasmine'
     ],
 
     // list of plugins
     plugins: [
-      'karma-chrome-launcher',
-      'karma-coverage',
       'karma-jasmine',
-      'karma-jspm',
-      'karma-junit-reporter',
       'karma-phantomjs-launcher'
     ],
 
-    // jspm
-    jspm: {
-      config: 'config.js',
-      loadFiles: ['test/shims.js', 'src/app/**/*.spec.ts'],
-      serveFiles: ['src/app/**/*.!(spec)+(ts)']
-    },
-
     // proxies
     proxies: {
-      '/src/app': '/base/src/app',
-      '/test': '/base/test',
-      '/jspm_packages/' : '/base/jspm_packages/'
+      '/src/app': '/base/src/app'
     },
 
     // preprocessors
     preprocessors: {
       // source files, that you wanna generate coverage for - do not include tests or libraries
       // (these files will be instrumented by Istanbul)
-      'src/**/*.!(spec)+(js)': []
     },
 
     // list of files / patterns to load in the browser
-    files: [],
+    files: [
+      'node_modules/es6-shim/es6-shim.js',
+      'node_modules/zone.js/dist/zone.js',
+      'node_modules/zone.js/dist/long-stack-trace-zone.js',
+      'node_modules/zone.js/dist/jasmine-patch.js',
+      'node_modules/systemjs/dist/system-polyfills.js',
+      'node_modules/systemjs/dist/system.src.js',
+      'node_modules/reflect-metadata/Reflect.js',
+
+      {pattern: 'node_modules/@angular/**/*.js', included: false, watched: false, served: true},
+      {pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false, served: true},
+      {pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false, served: true},
+      {pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false, served: true},
+      {pattern: 'node_modules/symbol-observable/**/*.js', included: false, watched: false},
+
+      // shim for ESx
+      'karma.shim.js',
+
+      // app
+      {pattern: 'src/app/**/*.js', included: false, watched: false},
+      {pattern: 'src/app/**/*.js.map', included: false, watched: false},
+      {pattern: 'src/app/**/*.ts', included: false, watched: false},
+
+      // assets
+      {pattern: 'src/**/*.html', included: false, watched: true},
+      {pattern: '.tmp/styles/**/*.css', included: false, watched: true}
+    ],
 
     // list of files to exclude
     exclude: [],
@@ -54,38 +65,7 @@ module.exports = config => {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'junit', 'coverage'],
-
-    // junit report, for jenkins
-    junitReporter: {
-      outputDir: '.',
-      outputFile: 'test-results.xml',
-       useBrowserName: false
-    },
-
-    // report coverage in different formats
-    coverageReporter: {
-      // this should also include formats for jenkins
-      type: 'html',
-      dir: 'reports/coverage/',
-      reporters: [
-        {
-          type: 'html',
-          subdir: 'html'
-        },
-        {
-          type: 'lcov',
-          subdir: 'lcov'
-        },
-        // reporters supporting the `file` property, use `subdir` to directly
-        // output them in the `dir` directory
-        {
-          type: 'cobertura',
-          subdir: '../../',
-          file: 'coverage.xml'
-        }
-      ]
-    },
+    reporters: ['progress'],
 
 
     // web server port
@@ -102,7 +82,7 @@ module.exports = config => {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // start these browsers
