@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 
 // decorator for component constructor
 @Component( {
-  selector : 'app',
+  selector : 'sg-app',
   template : '<h4>Hello World. I am ... {{ name }}</h4>'
 } )
 
