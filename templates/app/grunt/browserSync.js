@@ -6,6 +6,18 @@
  * Url: http://www.browsersync.io/
  */
 module.exports = ( grunt, config ) => {
+  // find out to be run in a container
+  /* eslint-disable camelcase */
+  const child_process = require( 'child_process' );
+  const containerized = () => {
+    let isContainerized = true; // this is very simple minded
+    child_process.exec( `cat /proc/self/cgroup`, error => {
+      isContainerized = error === null;
+    } );
+    return isContainerized;
+  };
+  /* eslint-enable camelcase */
+  // config
   return {
     all : {
       options : {
@@ -17,9 +29,7 @@ module.exports = ( grunt, config ) => {
           }
         },
         background : true, // this is what makes grunt-contrib-watch working
-        browser : [
-          'Chrome'
-        ],
+        browser : containerized() ? [] : ['Chrome'],
         server: {
           baseDir: [ '.tmp', 'src', 'node_modules', './' ] // include the artifacts and packages
         }
