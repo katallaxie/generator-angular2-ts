@@ -24,6 +24,7 @@
 .sass-cache
 .tscache
 *.log
+*.txt
 typings
 
 # Node
