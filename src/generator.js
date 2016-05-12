@@ -227,6 +227,7 @@ export default class Generator extends Yeoman {
 
     // docker
     this.copy( 'Dockerfile', 'Dockerfile' );
+    this.copy( '_dockerignore', '_dockerignore' );
 
     // karma
     this.template( `../${ this.dir }/karma.conf.js`, 'karma.conf.js' );
