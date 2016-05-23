@@ -57,6 +57,7 @@ System.config({
     "angular2-in-memory-web-api": "node_modules/angular2-in-memory-web-api",
     "babel": "node_modules/babel-core",
     "rxjs": "node_modules/rxjs",
-    "symbol-observable": "node_modules/symbol-observable"
+    "symbol-observable": "node_modules/symbol-observable",
+    "text": "node_modules/systemjs-plugin-text/text.js"
   }
 });

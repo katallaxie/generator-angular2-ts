@@ -47,6 +47,7 @@ System.config({
     "@angular/router": "node_modules/@angular/router",
     "angular2-in-memory-web-api": "node_modules/angular2-in-memory-web-api",
     "rxjs": "node_modules/rxjs",
-    "symbol-observable": "node_modules/symbol-observable"
+    "symbol-observable": "node_modules/symbol-observable",
+    "text": "node_modules/systemjs-plugin-text/text.js"
   }
 });
