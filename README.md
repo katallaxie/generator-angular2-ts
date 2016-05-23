@@ -17,7 +17,9 @@ The generator is coded in [ES6](https://github.com/lukehoban/es6features) with [
 - There also is a docker provided for deployment
 
 ## Todo
-- Smoke Testing & E2E (Nightwatch )
+- Smoke Testing & E2E (Nightwatch)
+- Detection of environment (development & production)
+- Live transpiling of TypeScript's
 _ ...
 
 ## Requirements
@@ -41,7 +43,7 @@ PhantomJS 2.x is needed to have the tests running; thus please install it separa
 brew install phantomjs
 ```
 
-Install `yo`, `grunt-cli`, `babel-cli` `karma`, `typings`, `typescript` and `nightwatch` in the global scope `-g`:
+Install `yo`, `grunt-cli`, `babel-cli`, `typings`, `typescript` and `nightwatch` in the global scope `-g`:
 
 > this is not really necessary, because some of these tools are installed locally, but it is best to have them always at hand
 
