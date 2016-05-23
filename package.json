@@ -9,7 +9,7 @@
   },
   "files": [
     "app",
-    "template"
+    "templates"
   ],
   "main": "app/index.js",
   "keywords": [
