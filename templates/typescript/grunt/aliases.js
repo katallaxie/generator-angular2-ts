@@ -48,6 +48,10 @@ module.exports = () => { // passing in grunt and the config
     'test' : { // test the app
       description : 'Runs unit tests, smoke tests, and else',
       tasks : [
+        // globbing sass on components
+        'sass_globbing',
+        // compile sass
+        'sass',
         // tslint
         'tslint',
         // running tests with karma

@@ -40,7 +40,7 @@ module.exports = config => {
         target: 'es5', // (optional) Specify ECMAScript target version: 'ES3' (default), or 'ES5'
         module: 'system', // (optional) Specify module code generation: 'commonjs' or 'amd'
         noImplicitAny: true, // (optional) Warn on expressions and declarations with an implied 'any' type.
-        noResolve: true, // (optional) Skip resolution and preprocessing.
+        noResolve: false, // (optional) Skip resolution and preprocessing.
         removeComments: true, // (optional) Do not emit comments to output.
         concatenateOutput: false // (optional) Concatenate and emit output to single file. By default true if module option is omited, otherwise false.
       },
@@ -101,7 +101,7 @@ module.exports = config => {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_DEBUG,
+    logLevel: config.LOG_INFO,
 
 
     // enable / disable watching file and executing tests whenever any file changes
@@ -115,7 +115,7 @@ module.exports = config => {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultaneous
