@@ -116,47 +116,4 @@ module.exports = grunt => { // always try to be nice
   // using https://github.com/firstandthird/load-grunt-config
   require('load-grunt-config')(grunt, config);
 
-  <% if ( isTypescript ) { %>
-
-  // custom SystemJS builder task
-  grunt.registerTask( 'builder', function () {
-
-    // async
-    const done = this.async();
-
-    // used modules
-    const builder = require('systemjs-builder');
-
-    // reading SystemJS builder config
-    const system = file.readJSON('builder.json');
-    const options = {
-      minify : true,
-      sourceMaps : true,
-      mangle : false,
-      runtime : false
-    };
-
-    // new builder
-    const build = new builder('./', './config.js');
-
-    // overwrite SystemJS config
-    build.config(system);
-
-    // build the final payload
-    build
-      .buildStatic( `${ root }/src/app/boot`, `${ root }/.tmp/scripts/app.js`, options )
-      .then( () => {
-        done();
-      } )
-      .catch( error => {
-        if ( error ) {
-          log.error( error );
-        }
-        done();
-      } );
-
-  } );
-
-  <% } %>
-
 };

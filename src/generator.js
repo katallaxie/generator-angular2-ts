@@ -235,7 +235,6 @@ export default class Generator extends Yeoman {
 
     // systemjs
     this.copy( `../${ this.dir }/config.js`, 'config.js' );
-    this.copy( `../${ this.dir }/grunt/systemjs.js`, 'grunt/systemjs.js' );
 
     // app
     this.directory( `../${ this.dir }/src/app`, `${ this.destinationRoot() }/src/app` );

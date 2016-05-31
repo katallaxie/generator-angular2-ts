@@ -60,6 +60,8 @@ module.exports = config => {
       {pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false, served: true},
       {pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false, served: true},
       {pattern: 'node_modules/symbol-observable/**/*.js', included: false, watched: false},
+      {pattern: 'node_modules/babel-polyfill/**/*.js', included: false, watched: false},
+      {pattern: 'node_modules/systemjs-plugin-text/**/*.js', included: false, watched: false},
 
       // shim for ESx
       'karma.shim.js',
@@ -69,6 +71,7 @@ module.exports = config => {
 
       // assets
       {pattern: 'src/**/*.html', included: false, watched: true},
+      {pattern: 'src/**/*.css', included: false, watched: true},
       {pattern: '.tmp/styles/**/*.css', included: false, watched: true}
     ],
 

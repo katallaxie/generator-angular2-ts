@@ -26,7 +26,7 @@ var allSpecFiles = Object.keys(window.__karma__.files)
 
 var packages = {
   'app':  { main: 'boot.js' },
-  'rxjs': { main: 'index.js', defaultExtension: 'js' },
+  'rxjs': { main: 'index.js' },
   'symbol-observable': { 'main': 'index.js' }
 };
 
@@ -49,8 +49,11 @@ System.config({
   map: {
     '@angular': '/base/node_modules/@angular',
     'angular2-in-memory-web-api': '/base/node_modules/angular2-in-memory-web-api',
+    'babel-polyfill': 'node_modules/babel-polyfill',
     'rxjs': '/base/node_modules/rxjs',
-    'symbol-observable': 'node_modules/symbol-observable'
+    'symbol-observable': 'node_modules/symbol-observable',
+    'text': 'node_modules/systemjs-plugin-text/text.js',
+    'zone.js': 'node_modules/zone.js'
   },
   packages: packages
 });

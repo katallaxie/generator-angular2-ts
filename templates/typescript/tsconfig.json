@@ -8,8 +8,9 @@
     "experimentalDecorators": true,
     "noImplicitAny": false,
     "newLine": "LF",
-    "compileOnSave": false
+    "suppressImplicitAnyIndexErrors": true
   },
+  "compileOnSave": false,
   "exclude": [
     "node_modules",
     "typings/main.d.ts",

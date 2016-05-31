@@ -1,8 +1,20 @@
-// importables
-import { bootstrap } from '@angular/platform-browser-dynamic';
-// import { enableProdMode } from '@angular/core';
-import { AppComponent } from './components/app/app';
+declare global {
+  interface Window {
+        env?: string;
+  }
+}
 
-// bootstrap & to production
-// enableProdMode();
+// importables
+import './polyfills';
+import { bootstrap } from '@angular/platform-browser-dynamic';
+import { enableProdMode } from '@angular/core'; // production mode
+import { AppComponent } from './components/app/app.component';
+
+// production
+if ( ! window.env &&
+  window.env !== 'fun' ) {
+    enableProdMode();
+  }
+
+// bootstrap app
 bootstrap( AppComponent );

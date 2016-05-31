@@ -47,6 +47,8 @@ coverage.lcov
 build/
 reports/
 src/styles/base/_components.scss
+src/app/**/*.css
+src/app/**/*.css.map
 src/app/**/*.js
 src/app/**/*.map
 www/

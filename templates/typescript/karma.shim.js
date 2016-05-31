@@ -25,9 +25,31 @@ var allSpecFiles = Object.keys(window.__karma__.files)
 // Load our SystemJS configuration.
 
 var packages = {
-  'app':  { main: 'boot.js' },
-  'rxjs': { main: 'index.js', defaultExtension: 'js' },
-  'symbol-observable': { 'main': 'index.js' }
+  'app':  { main: 'boot.ts',
+  'defaultExtension': 'ts',
+  'meta': {
+    '*.ts': {
+      'loader': 'ts'
+    }
+  } },
+  'rxjs': { main: 'index.js', defaultExtension: 'js',
+  'meta': {
+    '*.js': {
+      'typings': true
+    }
+  } },
+  'symbol-observable': { 'main': 'index.js' },
+  'ts': {
+    'main': 'plugin.js'
+  },
+  'typescript': {
+    'main': 'lib/typescript.js',
+    'meta': {
+      'lib/typescript.js': {
+        'exports': 'ts'
+      }
+    }
+  }
 };
 
 // Add angular packages to SystemJS config
@@ -41,16 +63,30 @@ var packages = {
   '@angular/router',
   '@angular/router-deprecated',
   '@angular/upgrade'
-].forEach(function (name) { packages[name] = {main: 'index.js', defaultExtension: 'js'};});
+].forEach(function (name) { packages[name] = {main: 'index.js', defaultExtension: 'js', 'meta': {
+  '*.js': {
+    'typings': true
+  }
+}};});
 
 System.config({
   baseURL: '/base',
   defaultJSExtensions: true,
+  transpiler: 'ts',
+  typescriptOptions: {
+    typeCheck: true,
+    tsconfig: true
+  },
   map: {
     '@angular': '/base/node_modules/@angular',
     'angular2-in-memory-web-api': '/base/node_modules/angular2-in-memory-web-api',
     'rxjs': '/base/node_modules/rxjs',
-    'symbol-observable': 'node_modules/symbol-observable'
+    'symbol-observable': 'node_modules/symbol-observable',
+    'text': 'node_modules/systemjs-plugin-text/text.js',
+    'babel-polyfill': 'node_modules/babel-polyfill',
+    'ts': 'node_modules/plugin-typescript/lib',
+    'typescript': 'node_modules/typescript',
+    'zone.js': 'node_modules/zone.js'
   },
   packages: packages
 });

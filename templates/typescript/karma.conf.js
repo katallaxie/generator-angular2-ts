@@ -16,7 +16,9 @@ module.exports = config => {
     // list of plugins
     plugins: [
       'karma-jasmine',
-      'karma-phantomjs-launcher'
+      'karma-phantomjs-launcher',
+      'karma-typescript-preprocessor',
+      'karma-chrome-launcher'
     ],
 
     // proxies
@@ -28,6 +30,24 @@ module.exports = config => {
     preprocessors: {
       // source files, that you wanna generate coverage for - do not include tests or libraries
       // (these files will be instrumented by Istanbul)
+      '**/*.ts': ['typescript']
+    },
+
+    typescriptPreprocessor: {
+      // options passed to the typescript compiler
+      options: {
+        sourceMap: false, // (optional) Generates corresponding .map file.
+        target: 'es5', // (optional) Specify ECMAScript target version: 'ES3' (default), or 'ES5'
+        module: 'system', // (optional) Specify module code generation: 'commonjs' or 'amd'
+        noImplicitAny: true, // (optional) Warn on expressions and declarations with an implied 'any' type.
+        noResolve: true, // (optional) Skip resolution and preprocessing.
+        removeComments: true, // (optional) Do not emit comments to output.
+        concatenateOutput: false // (optional) Concatenate and emit output to single file. By default true if module option is omited, otherwise false.
+      },
+      // transforming the filenames
+      transformPath: function(path) {
+        return path.replace(/\.ts$/, '.js');
+      }
     },
 
     // list of files / patterns to load in the browser
@@ -45,17 +65,20 @@ module.exports = config => {
       {pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false, served: true},
       {pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false, served: true},
       {pattern: 'node_modules/symbol-observable/**/*.js', included: false, watched: false},
+      {pattern: 'node_modules/babel-polyfill/**/*.js', included: false, watched: false},
+      {pattern: 'node_modules/systemjs-plugin-text/**/*.js', included: false, watched: false},
+      {pattern: 'node_modules/plugin-typescript/**/*.js', included: false, watched: false},
+      {pattern: 'node_modules/typescript/**/*.js', included: false, watched: false},
 
       // shim for ESx
       'karma.shim.js',
 
       // app
-      {pattern: 'src/app/**/*.js', included: false, watched: false},
-      {pattern: 'src/app/**/*.js.map', included: false, watched: false},
       {pattern: 'src/app/**/*.ts', included: false, watched: false},
 
       // assets
       {pattern: 'src/**/*.html', included: false, watched: true},
+      {pattern: 'src/**/*.css', included: false, watched: true},
       {pattern: '.tmp/styles/**/*.css', included: false, watched: true}
     ],
 
@@ -78,7 +101,7 @@ module.exports = config => {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
 
 
     // enable / disable watching file and executing tests whenever any file changes
@@ -87,12 +110,12 @@ module.exports = config => {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true,
+    singleRun: false,
 
     // Concurrency level
     // how many browser should be started simultaneous

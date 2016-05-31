@@ -12,12 +12,14 @@ module.exports = ( grunt, config ) => {
       reload : true
     },
     css : {
-      files : [ `${ config.path.app.styles }/**/*.scss`, `${ config.path.app.scripts }/**/*.ts` ],
+      files : [
+        `${ config.path.app.styles }/**/*.scss`,
+        `${ config.path.app.scripts }/**/*.scss`,
+        `${ config.path.app.scripts }/**/*.ts`
+      ],
       tasks : [
         // typescript linting
         'tslint',
-        // typescript
-        'ts',
         // mapping scss components
         'sass_globbing',
         // processing the sass

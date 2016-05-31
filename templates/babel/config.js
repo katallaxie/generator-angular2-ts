@@ -3,7 +3,7 @@ System.config({
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
-    "stage": 1,
+    "stage": 0,
     "optional": [
       "optimisation.modules.system"
     ]
@@ -38,6 +38,9 @@ System.config({
     "babel": {
       "main": "browser.js"
     },
+    "babel-polyfill": {
+      "main": "browser.js"
+    },
     "rxjs": {
       "main": "index.js"
     },
@@ -56,8 +59,10 @@ System.config({
     "@angular/router": "node_modules/@angular/router",
     "angular2-in-memory-web-api": "node_modules/angular2-in-memory-web-api",
     "babel": "node_modules/babel-core",
+    "babel-polyfill": "node_modules/babel-polyfill",
     "rxjs": "node_modules/rxjs",
     "symbol-observable": "node_modules/symbol-observable",
-    "text": "node_modules/systemjs-plugin-text/text.js"
+    "text": "node_modules/systemjs-plugin-text/text.js",
+    "zone.js": "node_modules/zone.js"
   }
 });

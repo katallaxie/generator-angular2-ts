@@ -21,6 +21,13 @@ module.exports = ( grunt, config ) => {
         src : [ 'app.scss' ],
         dest : config.path.tmp.styles,
         ext : '.css'
+      }, {
+        expand : true,
+        cwd : config.path.app.scripts,
+        src : [ '**/*.scss' ],
+        dest : config.path.app.scripts,
+        ext : '.css',
+        extDot : 'last'
       } ]
     }
   };

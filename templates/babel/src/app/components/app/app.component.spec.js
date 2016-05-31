@@ -1,8 +1,10 @@
 // importables
-import { it, expect, beforeEachProviders, describe } from '@angular/core/testing';
+import { Component, provide, ApplicationRef } from '@angular/core';
+import { it, expect, beforeEachProviders, inject, async, describe, MockApplicationRef } from '@angular/core/testing';
+import { TestComponentBuilder } from '@angular/compiler/testing';
 
 // testables
-import { AppComponent } from './app';
+import { AppComponent } from './app.component';
 
 // a helper component
 class TestComponent {
