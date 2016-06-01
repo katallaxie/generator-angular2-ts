@@ -7,7 +7,8 @@ System.config({
     typeCheck: true
   },
 
-  path: {},
+  path: {
+  },
 
   packages: {
     "@angular/core": {
@@ -67,6 +68,15 @@ System.config({
       }
     },
     "app": {
+      "main": "boot.ts",
+      "defaultExtension": "ts",
+      "meta": {
+        "*.ts": {
+          "loader": "ts"
+        }
+      }
+    },
+    "src/app": {
       "main": "boot.ts",
       "defaultExtension": "ts",
       "meta": {
