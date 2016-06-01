@@ -27,8 +27,6 @@ module.exports = () => { // passing in grunt and the config
       tasks : [
         // eslint
         'eslint',
-        // globbing sass on components
-        'sass_globbing',
         // compile sass
         'sass',
         // launching browserSync
@@ -62,8 +60,6 @@ module.exports = () => { // passing in grunt and the config
       tasks : [
         // eslint
         'eslint',
-        // globbing sass on components
-        'sass_globbing',
         // compile sass
         'sass',
         // prepare usemin
