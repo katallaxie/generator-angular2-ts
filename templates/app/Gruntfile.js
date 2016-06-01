@@ -64,7 +64,7 @@ module.exports = grunt => { // always try to be nice
         root: root,
         app: {
           base: `${ root }/src`,
-          boot: `${ root}/src/app/boot`,
+          boot: `src/app/boot`,
           fonts: `${ root }/src/fonts`,
           index: [`${root}/src/index.html`],
           images: `${root}/src/images`,
@@ -78,7 +78,7 @@ module.exports = grunt => { // always try to be nice
          */
         tmp: {
           base: `${ root }/.tmp/`,
-          main: `${ root }/.tmp/scripts/app.js`,
+          main: `.tmp/scripts/app.js`,
           concat: `${ root }/.tmp/concat`,
           styles: `${ root }/.tmp/styles`,
           scripts: `${ root }/.tmp/scripts`
