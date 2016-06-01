@@ -218,9 +218,6 @@ var Generator = function (_Yeoman) {
         this.copy('../' + this.dir + '/tsconfig.json', 'tsconfig.json');
         this.copy('../' + this.dir + '/typings.json', 'typings.json');
 
-        // SystemJS
-        this.copy('../' + this.dir + '/builder.json', 'builder.json');
-
         // git
         this.copy('../' + this.dir + '/_gitignore', '.gitignore');
       }
