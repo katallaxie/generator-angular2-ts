@@ -11,7 +11,7 @@ module.exports = ( grunt, config ) => {
       spawn : false, // important, do not remove this to have browserSync running
       reload : true
     },
-    css : {
+    all : {
       files : [
         `${ config.path.app.styles }/**/*.scss`,
         `${ config.path.app.scripts }/**/*.scss`,
@@ -20,8 +20,6 @@ module.exports = ( grunt, config ) => {
       tasks : [
         // typescript linting
         'tslint',
-        // mapping scss components
-        'sass_globbing',
         // processing the sass
         'sass'
       ]
