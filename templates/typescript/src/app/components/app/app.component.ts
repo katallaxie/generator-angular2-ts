@@ -1,23 +1,27 @@
+declare function require(name: string): any;
+
 // importables
-import { Component } from '@angular/core';
-import Html from './app.component.html!text';
-import Css from './app.component.css!text';
+import { Component, OnInit } from '@angular/core';
+
+// assets
+const html = require('./app.component.html');
+const styles = require('./app.component.css');
 
 // decorator for component constructor
 @Component( {
   selector : 'sg-app',
-  styles: [ Css ],
-  template : Html
+  styles: [ typeof styles === 'object' ? styles.default : styles ],
+  template: typeof html === 'object' ? html.default : html
 } )
 
 // component
-export class AppComponent { // it is recommended to export class in place
+export class AppComponent implements OnInit { // it is recommended to export class in place
 
   // types and variable init
   public name: string = `wait for it ...`;
 
-  // constructor
-  constructor () {
+  // execute as component becomes ready
+  public ngOnInit () {
 
     // timeout
     const timeout = 2500; // type is inferred
