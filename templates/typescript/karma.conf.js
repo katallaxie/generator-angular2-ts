@@ -54,6 +54,7 @@ module.exports = config => {
     files: [
       'node_modules/es6-shim/es6-shim.js',
       'node_modules/zone.js/dist/zone.js',
+      'node_modules/zone.js/dist/async-test.js',
       'node_modules/zone.js/dist/long-stack-trace-zone.js',
       'node_modules/zone.js/dist/jasmine-patch.js',
       'node_modules/systemjs/dist/system-polyfills.js',
