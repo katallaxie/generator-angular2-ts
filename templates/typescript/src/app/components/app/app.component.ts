@@ -4,8 +4,8 @@ declare function require(name: string): any;
 import { Component, OnInit } from '@angular/core';
 
 // assets
-const html = require('./app.component.html');
-const styles = require('./app.component.css');
+const html = require('./app.component.html!text');
+const styles = require('./app.component.css!text');
 
 // decorator for component constructor
 @Component( {
