@@ -1,5 +1,3 @@
-declare function require(name: string): any;
-
 // importables
 import { Component, OnInit } from '@angular/core';
 

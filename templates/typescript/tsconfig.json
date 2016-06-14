@@ -11,9 +11,7 @@
     "suppressImplicitAnyIndexErrors": true
   },
   "compileOnSave": false,
-  "exclude": [
-    "node_modules",
-    "typings/main.d.ts",
-    "typings/main"
+  "files": [
+    "typings/index.d.ts"
   ]
 }
