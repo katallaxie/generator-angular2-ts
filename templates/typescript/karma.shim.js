@@ -85,6 +85,7 @@ System.config({
     'text': 'node_modules/systemjs-plugin-text/text.js',
     'babel-polyfill': 'node_modules/babel-polyfill',
     'ts': 'node_modules/plugin-typescript/lib',
+    'ts-helpers': 'node_modules/ts-helpers',
     'typescript': 'node_modules/typescript',
     'zone.js': 'node_modules/zone.js'
   },

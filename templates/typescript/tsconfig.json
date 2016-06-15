@@ -8,9 +8,17 @@
     "experimentalDecorators": true,
     "noImplicitAny": false,
     "newLine": "LF",
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "noEmitHelpers": true
+  },
+  "atom": {
+    "rewriteTsconfig": false
   },
   "compileOnSave": false,
+  "filesGlob": [
+    "**/*.ts"
+
+  ],
   "files": [
     "typings/index.d.ts"
   ]

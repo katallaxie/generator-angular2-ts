@@ -1,132 +1,93 @@
-System.config({
-  baseURL: "./",
+// config
+var config = {
+  baseURL: './',
   defaultJSExtensions: true,
-  transpiler: "ts",
+  transpiler: 'ts',
   typescriptOptions: {
     tsconfig: true,
     typeCheck: true
   },
-
-  path: {
-  },
-
   packages: {
-    "@angular/core": {
-      "main": "index.js",
-      "meta": {
-        "*.js": {
-          "typings": true
+    'app': {
+      main: 'boot.ts',
+      defaultExtension: 'ts',
+      meta: {
+        '*.ts': {
+          loader: 'ts'
         }
       }
     },
-    "@angular/common": {
-      "main": "index.js",
-      "meta": {
-        "*.js": {
-          "typings": true
+    'src/app': {
+      main: 'boot.ts',
+      defaultExtension: 'ts',
+      meta: {
+        '*.ts': {
+          loader: 'ts'
         }
       }
     },
-    "@angular/compiler": {
-      "main": "index.js",
-      "meta": {
-        "*.js": {
-          "typings": true
+    'babel-polyfill': {
+      main: 'browser.js'
+    },
+    'rxjs': {
+      main: 'index.js',
+      meta: {
+        '*.js': {
+          typings: true
         }
       }
     },
-    "@angular/http": {
-      "main": "index.js",
-      "meta": {
-        "*.js": {
-          "typings": true
-        }
-      }
+    'symbol-observable': {
+      main: 'index.js'
     },
-    "@angular/router": {
-      "main": "index.js",
-      "meta": {
-        "*.js": {
-          "typings": true
-        }
-      }
+    'ts': {
+      main: 'plugin.js'
     },
-    "@angular/platform-browser": {
-      "main": "index.js",
-      "meta": {
-        "*.js": {
-          "typings": true
-        }
-      }
+    'ts-helpers': {
+      main: 'index.js'
     },
-    "@angular/platform-browser-dynamic": {
-      "main": "index.js",
-      "meta": {
-        "*.js": {
-          "typings": true
-        }
-      }
-    },
-    "app": {
-      "main": "boot.ts",
-      "defaultExtension": "ts",
-      "meta": {
-        "*.ts": {
-          "loader": "ts"
-        }
-      }
-    },
-    "src/app": {
-      "main": "boot.ts",
-      "defaultExtension": "ts",
-      "meta": {
-        "*.ts": {
-          "loader": "ts"
-        }
-      }
-    },
-    "babel-polyfill": {
-      "main": "browser.js"
-    },
-    "rxjs": {
-      "main": "index.js",
-      "meta": {
-        "*.js": {
-          "typings": true
-        }
-      }
-    },
-    "symbol-observable": {
-      "main": "index.js"
-    },
-    "ts": {
-      "main": "plugin.js"
-    },
-    "typescript": {
-      "main": "lib/typescript.js",
-      "meta": {
-        "lib/typescript.js": {
-          "exports": "ts"
+    'typescript': {
+      main: 'lib/typescript.js',
+      meta: {
+        'lib/typescript.js': {
+          exports: 'ts'
         }
       }
     }
   },
-
   map: {
-    "@angular/common": "node_modules/@angular/common",
-    "@angular/compiler": "node_modules/@angular/compiler",
-    "@angular/core": "node_modules/@angular/core",
-    "@angular/http": "node_modules/@angular/http",
-    "@angular/platform-browser": "node_modules/@angular/platform-browser",
-    "@angular/platform-browser-dynamic": "node_modules/@angular/platform-browser-dynamic",
-    "@angular/router": "node_modules/@angular/router",
-    "angular2-in-memory-web-api": "node_modules/angular2-in-memory-web-api",
-    "babel-polyfill": "node_modules/babel-polyfill",
-    "ts": "node_modules/plugin-typescript/lib",
-    "typescript": "node_modules/typescript",
-    "rxjs": "node_modules/rxjs",
-    "symbol-observable": "node_modules/symbol-observable",
-    "text": "node_modules/systemjs-plugin-text/text.js",
-    "zone.js": "node_modules/zone.js"
+    'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
+    'babel-polyfill': 'node_modules/babel-polyfill',
+    'ts': 'node_modules/plugin-typescript/lib',
+    'ts-helpers': 'node_modules/ts-helpers',
+    'typescript': 'node_modules/typescript',
+    'rxjs': 'node_modules/rxjs',
+    'symbol-observable': 'node_modules/symbol-observable',
+    'text': 'node_modules/systemjs-plugin-text/text.js',
+    'zone.js': 'node_modules/zone.js'
   }
-});
+};
+
+// ng2
+[
+  '@angular/common',
+  '@angular/compiler',
+  '@angular/core',
+  '@angular/http',
+  '@angular/platform-browser-dynamic',
+  '@angular/platform-browser',
+  '@angular/router'
+].forEach( function (pkg) {
+  config.packages[pkg] = {
+    main: 'index.js',
+    meta: {
+      '*.js': {
+        typings: true
+      }
+    }
+  };
+  config.map[pkg] = 'node_modules/' + pkg;
+} );
+
+// load
+System.config(config);

@@ -52,7 +52,6 @@ module.exports = config => {
 
     // list of files / patterns to load in the browser
     files: [
-      'node_modules/es6-shim/es6-shim.js',
       'node_modules/zone.js/dist/zone.js',
       'node_modules/zone.js/dist/async-test.js',
       'node_modules/zone.js/dist/long-stack-trace-zone.js',
@@ -61,14 +60,15 @@ module.exports = config => {
       'node_modules/systemjs/dist/system.src.js',
       'node_modules/reflect-metadata/Reflect.js',
 
-      {pattern: 'node_modules/@angular/**/*.js', included: false, watched: false, served: true},
       {pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false, served: true},
-      {pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false, served: true},
-      {pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false, served: true},
-      {pattern: 'node_modules/symbol-observable/**/*.js', included: false, watched: false},
+      {pattern: 'node_modules/@angular/**/*.js', included: false, watched: false, served: true},
       {pattern: 'node_modules/babel-polyfill/**/*.js', included: false, watched: false},
-      {pattern: 'node_modules/systemjs-plugin-text/**/*.js', included: false, watched: false},
       {pattern: 'node_modules/plugin-typescript/**/*.js', included: false, watched: false},
+      {pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false, served: true},
+      {pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false, served: true},
+      {pattern: 'node_modules/symbol-observable/**/*.js', included: false, watched: false},
+      {pattern: 'node_modules/systemjs-plugin-text/**/*.js', included: false, watched: false},
+      {pattern: 'node_modules/ts-helpers/**/*.js', included: false, watched: false},
       {pattern: 'node_modules/typescript/**/*.js', included: false, watched: false},
 
       // shim for ESx

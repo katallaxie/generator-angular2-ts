@@ -7,6 +7,7 @@ const styles = require('./app.component.css!text');
 
 // decorator for component constructor
 @Component( {
+  moduleId: module.id,
   selector : 'sg-app',
   styles: [ typeof styles === 'object' ? styles.default : styles ],
   template: typeof html === 'object' ? html.default : html
