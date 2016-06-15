@@ -62,6 +62,8 @@ module.exports = () => { // passing in grunt and the config
         'eslint',
         // compile sass
         'sass',
+        // testing
+        'karma',
         // prepare usemin
         'useminPrepare',
         // concat css

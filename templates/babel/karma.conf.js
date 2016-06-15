@@ -47,7 +47,6 @@ module.exports = config => {
 
     // list of files / patterns to load in the browser
     files: [
-      'node_modules/es6-shim/es6-shim.js',
       'node_modules/zone.js/dist/zone.js',
       'node_modules/zone.js/dist/async-test.js',
       'node_modules/zone.js/dist/long-stack-trace-zone.js',
@@ -135,7 +134,7 @@ module.exports = config => {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode

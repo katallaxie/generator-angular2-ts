@@ -1,7 +1,7 @@
 // importables
 import { Component, OnInit } from '@angular/core';
-import Html from 'src/app/components/app.component.html!text';
-import Css from 'src/app/components/app.component.css!text';
+import Html from './app.component.html!text';
+import Css from './app.component.css!text';
 
 // decorator for component constructor
 @Component( {
@@ -11,13 +11,13 @@ import Css from 'src/app/components/app.component.css!text';
 } )
 
 // component
-export class AppComponent implements OnInit { // it is recommended to export class in place
+export class AppComponent extends OnInit { // it is recommended to export class in place
 
   // constructor
   constructor () {
 
-    // call to OnInit
-    super ();
+    // call to super
+    super();
 
     // this is for demoing
     this.name = `wait for it ...`;
