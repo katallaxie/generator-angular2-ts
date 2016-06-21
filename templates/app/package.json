@@ -1,11 +1,11 @@
 {
-  "id": "<%= app %>",
-  "name": "<%= appname %>",
+  "id": "<%= answers.app %>",
+  "name": "<%= answers.appname %>",
   "version": "0.0.0",
-  "description": "<%= description %>",
+  "description": "<%= answers.description %>",
   "author": {
-    "name": "<%= author.email %>",
-    "email": "<%= author.name %>"
+    "name": "<%= answers.email %>",
+    "email": "<%= answers.name %>"
   },
   "contributors": [
     {}
