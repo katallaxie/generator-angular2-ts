@@ -9,8 +9,10 @@ const styles = require('./app.component.css!text');
 // decorator for component constructor
 @Component( {
   directives: [AlertComponent],
-  moduleId: module.id,
+  moduleId: module.id, // should be removed in case of html, css
   selector : 'sg-app',
+  // styleUrls: ['app/components/app/app.component.css'],
+  // templateUrl: 'app/components/app/app.component.html'
   styles: [ typeof styles === 'object' ? styles.default : styles ],
   template: typeof html === 'object' ? html.default : html
 } )

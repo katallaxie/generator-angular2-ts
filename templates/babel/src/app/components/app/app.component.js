@@ -10,6 +10,8 @@ import Css from './app.component.css!text';
 @Component( {
   directives: [AlertComponent],
   selector : 'sg-app',
+  // styleUrls: ['app/components/app/app.component.css'],
+  // templateUrl: 'app/components/app/app.component.html'
   styles: [ Css ],
   template : Html
 } )

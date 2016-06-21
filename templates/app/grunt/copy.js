@@ -11,8 +11,9 @@ module.exports = ( grunt, config ) => {
       files : [ {
         expand : true,
         cwd : config.path.app.base,
-        src : [
-          'index.html'
+        src: [
+          'index.html',
+          'app/**/*.{html,css}'
         ],
         dest : config.path.www.base
       }, {
