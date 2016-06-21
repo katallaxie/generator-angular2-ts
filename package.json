@@ -27,7 +27,9 @@
     "yeoman-generator": "^0.23.4",
     "yosay": "^1.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt": "^1.0.1"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/katallaxie/generator-angular2-ts.git"
