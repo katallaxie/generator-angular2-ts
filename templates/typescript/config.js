@@ -26,6 +26,22 @@ var config = {
         }
       }
     },
+    'moment': {
+      main: 'moment.js',
+      meta: {
+        '*.js': {
+          typings: true
+        }
+      }
+    },
+    'ng2-bootstrap': {
+      main: 'ng2-bootstrap.js',
+      meta: {
+        '*.js': {
+          typings: true
+        }
+      }
+    },
     'babel-polyfill': {
       main: 'browser.js'
     },
@@ -58,12 +74,14 @@ var config = {
   map: {
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
     'babel-polyfill': 'node_modules/babel-polyfill',
-    'ts': 'node_modules/plugin-typescript/lib',
-    'ts-helpers': 'node_modules/ts-helpers',
-    'typescript': 'node_modules/typescript',
+    'moment': 'node_modules/moment',
+    'ng2-bootstrap': 'node_modules/ng2-bootstrap',
     'rxjs': 'node_modules/rxjs',
     'symbol-observable': 'node_modules/symbol-observable',
     'text': 'node_modules/systemjs-plugin-text/text.js',
+    'ts-helpers': 'node_modules/ts-helpers',
+    'ts': 'node_modules/plugin-typescript/lib',
+    'typescript': 'node_modules/typescript',
     'zone.js': 'node_modules/zone.js'
   }
 };

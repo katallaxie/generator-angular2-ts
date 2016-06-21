@@ -1,68 +1,86 @@
 System.config({
-  baseURL: "./",
+  baseURL: './',
   defaultJSExtensions: true,
-  transpiler: "babel",
+  transpiler: 'babel',
   babelOptions: {
-    "stage": 0,
-    "optional": [
-      "optimisation.modules.system"
+    'stage': 0,
+    'optional': [
+      'optimisation.modules.system'
     ]
   },
   paths: {},
 
   packages: {
-    "@angular/core": {
-      "main": "index.js"
+    '@angular/core': {
+      'main': 'index.js'
     },
-    "@angular/common": {
-      "main": "index.js"
+    '@angular/common': {
+      'main': 'index.js'
     },
-    "@angular/compiler": {
-      "main": "index.js"
+    '@angular/compiler': {
+      'main': 'index.js'
     },
-    "@angular/http": {
-      "main": "index.js"
+    '@angular/http': {
+      'main': 'index.js'
     },
-    "@angular/router": {
-      "main": "index.js"
+    '@angular/router': {
+      'main': 'index.js'
     },
-    "@angular/platform-browser": {
-      "main": "index.js"
+    '@angular/platform-browser': {
+      'main': 'index.js'
     },
-    "@angular/platform-browser-dynamic": {
-      "main": "index.js"
+    '@angular/platform-browser-dynamic': {
+      'main': 'index.js'
     },
-    "app": {
-      "main": "boot.js"
+    'app': {
+      'main': 'boot.js'
     },
-    "babel": {
-      "main": "browser.js"
+    'babel': {
+      'main': 'browser.js'
     },
-    "babel-polyfill": {
-      "main": "browser.js"
+    'babel-polyfill': {
+      'main': 'browser.js'
     },
-    "rxjs": {
-      "main": "index.js"
+    'moment': {
+      main: 'moment.js',
+      meta: {
+        '*.js': {
+          typings: true
+        }
+      }
     },
-    "symbol-observable": {
-      "main": "index.js"
+    'ng2-bootstrap': {
+      main: 'ng2-bootstrap.js',
+      meta: {
+        '*.js': {
+          typings: true
+        }
+      }
+    },
+    'rxjs': {
+      'main': 'index.js'
+    },
+    'symbol-observable': {
+      'main': 'index.js'
     }
   },
 
   map: {
-    "@angular/common": "node_modules/@angular/common",
-    "@angular/compiler": "node_modules/@angular/compiler",
-    "@angular/core": "node_modules/@angular/core",
-    "@angular/http": "node_modules/@angular/http",
-    "@angular/platform-browser": "node_modules/@angular/platform-browser",
-    "@angular/platform-browser-dynamic": "node_modules/@angular/platform-browser-dynamic",
-    "@angular/router": "node_modules/@angular/router",
-    "angular2-in-memory-web-api": "node_modules/angular2-in-memory-web-api",
-    "babel": "node_modules/babel-core",
-    "babel-polyfill": "node_modules/babel-polyfill",
-    "rxjs": "node_modules/rxjs",
-    "symbol-observable": "node_modules/symbol-observable",
-    "text": "node_modules/systemjs-plugin-text/text.js",
-    "zone.js": "node_modules/zone.js"
+    '@angular/common': 'node_modules/@angular/common',
+    '@angular/compiler': 'node_modules/@angular/compiler',
+    '@angular/core': 'node_modules/@angular/core',
+    '@angular/http': 'node_modules/@angular/http',
+    '@angular/platform-browser': 'node_modules/@angular/platform-browser',
+    '@angular/platform-browser-dynamic': 'node_modules/@angular/platform-browser-dynamic',
+    '@angular/router': 'node_modules/@angular/router',
+    'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
+    'babel': 'node_modules/babel-core',
+    'babel-polyfill': 'node_modules/babel-polyfill',
+    'moment': 'node_modules/moment',
+    'ng2-bootstrap': 'node_modules/ng2-bootstrap',
+    'rxjs': 'node_modules/rxjs',
+    'symbol-observable': 'node_modules/symbol-observable',
+    'text': 'node_modules/systemjs-plugin-text/text.js',
+    'zone.js': 'node_modules/zone.js'
   }
 });

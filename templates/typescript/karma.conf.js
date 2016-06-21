@@ -15,10 +15,13 @@ module.exports = config => {
 
     // list of plugins
     plugins: [
+      'karma-jspm',
       'karma-jasmine',
       'karma-phantomjs-launcher',
-      'karma-typescript-preprocessor',
-      'karma-chrome-launcher'
+      'karma-chrome-launcher',
+      'karma-babel-preprocessor',
+      'karma-coverage',
+      'karma-junit-reporter'
     ],
 
     // proxies
@@ -30,23 +33,15 @@ module.exports = config => {
     preprocessors: {
       // source files, that you wanna generate coverage for - do not include tests or libraries
       // (these files will be instrumented by Istanbul)
-      '**/*.ts': ['typescript']
+      'src/**/*.!(spec)+(js)': ['babel', 'coverage']
     },
 
-    typescriptPreprocessor: {
-      // options passed to the typescript compiler
+    // transpile with babel since the coverage reporter throws error on ES6 syntax
+    babelPreprocessor: {
       options: {
-        sourceMap: false, // (optional) Generates corresponding .map file.
-        target: 'es5', // (optional) Specify ECMAScript target version: 'ES3' (default), or 'ES5'
-        module: 'commonjs', // (optional) Specify module code generation: 'commonjs' or 'amd'
-        noImplicitAny: true, // (optional) Warn on expressions and declarations with an implied 'any' type.
-        noResolve: false, // (optional) Skip resolution and preprocessing.
-        removeComments: true, // (optional) Do not emit comments to output.
-        concatenateOutput: false // (optional) Concatenate and emit output to single file. By default true if module option is omited, otherwise false.
-      },
-      // transforming the filenames
-      transformPath: function(path) {
-        return path.replace(/\.ts$/, '.js');
+        presets: ['es2015', 'stage-0'],
+        sourceMap: 'inline',
+        plugins: ['transform-decorators-legacy']
       }
     },
 
@@ -60,22 +55,21 @@ module.exports = config => {
       'node_modules/systemjs/dist/system.src.js',
       'node_modules/reflect-metadata/Reflect.js',
 
-      {pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false, served: true},
       {pattern: 'node_modules/@angular/**/*.js', included: false, watched: false, served: true},
-      {pattern: 'node_modules/babel-polyfill/**/*.js', included: false, watched: false},
-      {pattern: 'node_modules/plugin-typescript/**/*.js', included: false, watched: false},
-      {pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false, served: true},
+      {pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false, served: true},
       {pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false, served: true},
+      {pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false, served: true},
+      {pattern: 'node_modules/moment/**/*.js', included: false, watched: false, served: true},
+      {pattern: 'node_modules/ng2-bootstrap/**/*.js', included: false, watched: false, served: true},
       {pattern: 'node_modules/symbol-observable/**/*.js', included: false, watched: false},
+      {pattern: 'node_modules/babel-polyfill/**/*.js', included: false, watched: false},
       {pattern: 'node_modules/systemjs-plugin-text/**/*.js', included: false, watched: false},
-      {pattern: 'node_modules/ts-helpers/**/*.js', included: false, watched: false},
-      {pattern: 'node_modules/typescript/**/*.js', included: false, watched: false},
 
       // shim for ESx
       'karma.shim.js',
 
       // app
-      {pattern: 'src/app/**/*.ts', included: false, watched: false},
+      {pattern: 'src/app/**/*.js', included: false, watched: false},
 
       // assets
       {pattern: 'src/**/*.html', included: false, watched: true},
@@ -89,7 +83,38 @@ module.exports = config => {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'junit', 'coverage'],
+
+    // junit report, for jenkins
+    junitReporter: {
+      outputDir: '.',
+      outputFile: 'test-results.xml',
+       useBrowserName: false
+    },
+
+    // report coverage in different formats
+    coverageReporter: {
+      // this should also include formats for jenkins
+      type: 'html',
+      dir: 'reports/coverage/',
+      reporters: [
+        {
+          type: 'html',
+          subdir: 'html'
+        },
+        {
+          type: 'lcov',
+          subdir: 'lcov'
+        },
+        // reporters supporting the `file` property, use `subdir` to directly
+        // output them in the `dir` directory
+        {
+          type: 'cobertura',
+          subdir: '../../',
+          file: 'coverage.xml'
+        }
+      ]
+    },
 
 
     // web server port
@@ -102,7 +127,7 @@ module.exports = config => {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_WARN,
+    logLevel: config.LOG_ERROR,
 
 
     // enable / disable watching file and executing tests whenever any file changes

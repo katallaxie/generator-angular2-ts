@@ -1,5 +1,6 @@
 // importables
 import { Component, OnInit } from '@angular/core';
+import { AlertComponent } from 'ng2-bootstrap';
 
 // assets
 const html = require('./app.component.html!text');
@@ -7,6 +8,7 @@ const styles = require('./app.component.css!text');
 
 // decorator for component constructor
 @Component( {
+  directives: [AlertComponent],
   moduleId: module.id,
   selector : 'sg-app',
   styles: [ typeof styles === 'object' ? styles.default : styles ],

@@ -309,6 +309,7 @@ export default class Generator extends Yeoman {
 
     // saving config
     this.config.save();
+
     // in case you wanted to skip install
     if ( this.options[ 'skip-install' ] ) {
       Util.log( [ `\nPlease have '${Chalk.yellow.bold('npm install')}' run.`,

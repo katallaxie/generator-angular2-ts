@@ -13,9 +13,10 @@ module.exports = ( grunt, config ) => {
     },
     all : {
       files : [
-        `${ config.path.app.styles }/**/*.scss`,
-        `${ config.path.app.scripts }/**/*.scss`,
-        `${ config.path.app.scripts }/**/*.js`
+        `${config.path.app.styles}/**/*.scss`,
+        `${config.path.app.scripts}/**/*.scss`,
+        `${config.path.app.scripts}/**/*.js`
+        `${config.path.app.scripts}/**/*.html`
       ],
       tasks : [
         // processing the sass

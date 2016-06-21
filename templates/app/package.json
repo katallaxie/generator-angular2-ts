@@ -97,6 +97,7 @@
     "load-grunt-config": "^0.19.2",
     "load-grunt-tasks": "^3.5.0",
     "merge": "^1.2.0",
+    "ng2-bootstrap": "^1.0.17",
     "nightwatch": "^0.9.4",
     "node-sass": "^3.8.0",
     "phantomjs-prebuilt": "^2.1.7",

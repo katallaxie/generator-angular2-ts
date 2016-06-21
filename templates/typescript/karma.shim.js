@@ -3,7 +3,7 @@ Error.stackTraceLimit = Infinity;
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
 
 // cancel Karma's start
-__karma__.loaded = function () {};
+__karma__.loaded = function() {};
 
 function isJsFile(path) {
   return path.slice(-3) == '.js';
@@ -25,31 +25,31 @@ var allSpecFiles = Object.keys(window.__karma__.files)
 // Load our SystemJS configuration.
 
 var packages = {
-  'app':  { main: 'boot.ts',
-  'defaultExtension': 'ts',
-  'meta': {
-    '*.ts': {
-      'loader': 'ts'
-    }
-  } },
-  'rxjs': { main: 'index.js', defaultExtension: 'js',
-  'meta': {
-    '*.js': {
-      'typings': true
-    }
-  } },
-  'symbol-observable': { 'main': 'index.js' },
-  'ts': {
-    'main': 'plugin.js'
+  'app': {
+    main: 'boot.js'
   },
-  'typescript': {
-    'main': 'lib/typescript.js',
-    'meta': {
-      'lib/typescript.js': {
-        'exports': 'ts'
+  'rxjs': {
+    main: 'index.js'
+  },
+  'symbol-observable': {
+    'main': 'index.js'
+  },
+  'moment': {
+    main: 'moment.js',
+    meta: {
+      '*.js': {
+        typings: true
       }
     }
-  }
+  },
+  'ng2-bootstrap': {
+    main: 'ng2-bootstrap.js',
+    meta: {
+      '*.js': {
+        typings: true
+      }
+    }
+  },
 };
 
 // Add angular packages to SystemJS config
@@ -63,30 +63,25 @@ var packages = {
   '@angular/router',
   '@angular/router-deprecated',
   '@angular/upgrade'
-].forEach(function (name) { packages[name] = {main: 'index.js', defaultExtension: 'js', 'meta': {
-  '*.js': {
-    'typings': true
-  }
-}};});
+].forEach(function(name) {
+  packages[name] = {
+    main: 'index.js',
+    defaultExtension: 'js'
+  };
+});
 
 System.config({
   baseURL: '/base',
   defaultJSExtensions: true,
-  transpiler: 'ts',
-  typescriptOptions: {
-    typeCheck: true,
-    tsconfig: true
-  },
   map: {
     '@angular': '/base/node_modules/@angular',
     'angular2-in-memory-web-api': '/base/node_modules/angular2-in-memory-web-api',
+    'babel-polyfill': 'node_modules/babel-polyfill',
+    'moment': 'node_modules/moment',
+    'ng2-bootstrap': 'node_modules/ng2-bootstrap',
     'rxjs': '/base/node_modules/rxjs',
     'symbol-observable': 'node_modules/symbol-observable',
     'text': 'node_modules/systemjs-plugin-text/text.js',
-    'babel-polyfill': 'node_modules/babel-polyfill',
-    'ts': 'node_modules/plugin-typescript/lib',
-    'ts-helpers': 'node_modules/ts-helpers',
-    'typescript': 'node_modules/typescript',
     'zone.js': 'node_modules/zone.js'
   },
   packages: packages
@@ -95,7 +90,7 @@ System.config({
 Promise.all([
   System.import('@angular/core/testing'),
   System.import('@angular/platform-browser-dynamic/testing')
-]).then(function (providers) {
+]).then(function(providers) {
   var testing = providers[0];
   var testingBrowser = providers[1];
 
@@ -107,7 +102,7 @@ Promise.all([
   // Finally, load all spec files.
   // This will run the tests directly.
   return Promise.all(
-    allSpecFiles.map(function (moduleName) {
+    allSpecFiles.map(function(moduleName) {
       console.log(moduleName);
       return System.import(moduleName);
     }));
