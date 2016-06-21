@@ -240,9 +240,6 @@ var Generator = function (_Yeoman) {
     key: 'installing',
     value: function installing() {
 
-      // writing to the console that npm is installing
-      _util2.default.log(['\n' + _chalk2.default.white.bold('Installing dependencies and initializing the project ...') + '\n']);
-
       // npm
       if (!this.options['skip-install']) {
         this.runInstall('npm', '', config.npm);
@@ -257,6 +254,7 @@ var Generator = function (_Yeoman) {
 
       // saving config
       this.config.save();
+
       // in case you wanted to skip install
       if (this.options['skip-install']) {
         _util2.default.log(['\nPlease have \'' + _chalk2.default.yellow.bold('npm install') + '\' run.', 'Afterwards run \'' + _chalk2.default.yellow.bold('npm fun') + '\' or \'' + _chalk2.default.yellow.bold('npm fun') + '\''].join('\n'));
