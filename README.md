@@ -87,7 +87,7 @@ npm run docker
 and have run
 
 ```
-docker run -it --rm -p 8080:8080 angular2-ts
+docker run -it --rm -p 80:8080 angular2-ts
 ```
 
 in the deployment.
