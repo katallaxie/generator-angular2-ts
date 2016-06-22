@@ -1,17 +1,17 @@
 # Angular 2.x Generator + TypeScript/Babel (ES6/ES7)
 
-> Experimental Yeoman generator for your next Angular 2.x project; which supports TypeScript and Babel (ES6/7)
+> Experimental Yeoman generator for your first Angular 2 project ... have `fun`
 
-The generator is coded in [ES6](https://github.com/lukehoban/es6features) with [Babel](https://babeljs.io/) as polyfill. Thus, it avoids much of the overhead in creating the generator.
+The generator enables you to write your Angular 2 application in plain JavaScript using ES6/ES7 features such as decorators and template strings. Along side the [Babel](https://babeljs.io/) flavor you can write your Angular 2 application using TypeScript. Both flavors are lived transpiled in the browser of your choice.
 
 ## Features
-- Angular 2.x
-- Use ES6 Modules via [SystemJS](https://github.com/systemjs/systemjs)
+- Angular 2.0 RC3 using the new component router, and inline templates
+- [Babel](https://babeljs.io/) with ES6/ES7 features
+- [SystemJS](https://github.com/systemjs/systemjs) and [SystemJS Builder](https://github.com/systemjs/builder)
 - TypeScript + tslint (with [Codelyzer](https://github.com/mgechev/codelyzer))
 - Babel with SystemJS
 - Modular [Grunt](http://gruntjs.com/)
 - [Sass](http://sass-lang.com/) for CSS preprocessing
-- Bundling JavaScript via SystemJS (SFX)
 - Uses [BrowserSync](https://www.browsersync.io/) to live code in the browser
 - Also does image compression via imagemin
 - There also is a docker provided for deployment
