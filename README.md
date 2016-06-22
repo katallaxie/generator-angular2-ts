@@ -55,6 +55,8 @@ Run `yo angular2-ts`
 yo angular2-ts [appname]
 ```
 
+### Develop in the Browser
+
 Have fun with `fun`.
 
 ```
