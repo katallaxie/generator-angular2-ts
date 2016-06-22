@@ -18,8 +18,6 @@ The generator is coded in [ES6](https://github.com/lukehoban/es6features) with [
 
 ## Todo
 - Smoke Testing & E2E (Nightwatch)
-- Detection of environment (development & production)
-- Live transpiling of TypeScript's
 _ ...
 
 ## Requirements
