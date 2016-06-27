@@ -209,7 +209,7 @@ module.exports = yeoman.Base.extend({
     }
 
     // Write your files
-    this.fs.write(this.destinationPath('README.md'), `# ${ this.app }\n`);
+    this.fs.write(this.destinationPath('README.md'), `# ${ this.appname }\n`);
 
   },
 
