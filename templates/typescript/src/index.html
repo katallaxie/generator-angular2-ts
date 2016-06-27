@@ -1,0 +1,56 @@
+<!-- default; HTML5 -->
+<html>
+
+  <head>
+
+    <!-- default; HTML5 routing -->
+    <base href="/">
+
+    <!-- default; title -->
+    <title>Angular 2.0 Demo</title>
+
+    <!-- default; UTF-8 encoding -->
+    <meta charset="utf-8">
+
+    <!-- default; inital setting to view 100% on mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- custom; Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!-- build:css(.tmp) styles/app.css -->
+    <!-- default; pre-processed stylesheet -->
+    <link rel="stylesheet" href="styles/app.css"/>
+    <!-- endbuild -->
+
+    <!-- process:remove -->
+    <!-- this is for the Microsoft guys -->
+    <script src="http://localhost:1337/vorlon.js"></script>
+    <!-- /process -->
+
+    <!-- process:remove -->
+    <script>
+      window.env = 'fun'
+    </script>
+    <!-- /process -->
+
+  </head>
+
+  <body>
+
+    <!-- default; display the app -->
+    <sg-app>Loading ...</sg-app>
+
+    <!-- default; App -->
+    <!-- build:js(.tmp) scripts/app.js -->
+    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+    <script src="node_modules/systemjs/dist/system.js"></script>
+    <script src="config.js"></script>
+    <script>
+      System.import('app')
+        .catch(console.error.bind(console)); // make sure any errors are print to console
+    </script>
+    <!-- endbuild -->
+
+  </body>
+
+</html>
