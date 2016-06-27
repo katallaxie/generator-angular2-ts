@@ -1,6 +1,6 @@
 {
   "name": "generator-angular2-ts",
-  "version": "0.2.20",
+  "version": "0.2.21",
   "dependencies": {
     "abbrev": {
       "version": "1.0.9",
